@@ -11,14 +11,18 @@ function App() {
 
       <div style={{ backgroundImage: "url(" + vegetables + ")" }}>
         <div className="container-fluid pt-4 pr-4">
-          <div className="justify-content-md-center" style={{ marginTop: "6rem!important" }}>
+
+          <div className="row justify-content-md-center">
             <div className="col">
               <div className="bg-dark bg-gradient p-3 fixed-top">
                   <h1 className="text-white text-center">La papa</h1>
               </div>
             </div>
           </div>
-          <div className="row justify-content-md-center mt-3">
+
+
+
+          <div className="row justify-content-md-center foodOne">
             <div className="col-2"></div>
             <div className="col">
               <FoodCard />
