@@ -1,34 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import vegetables from './assets/vegetables.jpg';
+import backgroundMain from './assets/background-cook-2.jpg'
 import './App.css'
+import { FoodCard } from './components/FoodCard';
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <>
+
+      <div style={{ backgroundImage: "url(" + vegetables + ")" }}>
+        <div className="container-fluid pt-4 pr-4">
+          <div className="justify-content-md-center" style={{ marginTop: "6rem!important" }}>
+            <div className="col">
+              <div className="bg-dark bg-gradient p-3 fixed-top">
+                  <h1 className="text-white text-center">La papa</h1>
+              </div>
+            </div>
+          </div>
+          <div className="row justify-content-md-center mt-3">
+            <div className="col-2"></div>
+            <div className="col">
+              <FoodCard />
+            </div>
+            <div className="col-2"></div>
+          </div>
+
+
+          <div className="row justify-content-md-center mt-3">
+            <div className="col-2"></div>
+            <div className="col">
+              <FoodCard />
+            </div>
+            <div className="col-2"></div>
+          </div>
+
+
+        </div> 
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+     </>
   )
 }
 
