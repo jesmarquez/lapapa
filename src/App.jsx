@@ -40,9 +40,9 @@ function App() {
           </div>
 
 
-        </div> 
+        </div> {/* div container */}
 
-      </div>
+      </div> {/* div app */}
      </>
   )
 }
