@@ -2,6 +2,7 @@ import vegetables from './assets/vegetables.jpg';
 import backgroundMain from './assets/background-cook-2.jpg'
 import './App.css'
 import { FoodCard } from './components/FoodCard';
+import { OrdenarModal } from './components/OrdenarModal';
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
         </div> {/* div container */}
 
       </div> {/* div app */}
+
      </>
   )
 }
