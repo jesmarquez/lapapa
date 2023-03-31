@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 
 export const OrdenarModal = ({ showOrdenar, handleOrdenarClose } ) => {
 
-  console.log(showOrdenar);
+  // console.log(showOrdenar);
   // const [show, setShow] = useState(showOrdenar);
 
   // const handleClose = () => setShow(false);
