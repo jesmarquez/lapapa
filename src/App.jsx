@@ -1,10 +1,7 @@
 import { useState } from "react";
-import vegetables from './assets/vegetables.jpg';
-import Button from 'react-bootstrap/Button';
-import backgroundMain from './assets/background-cook-2.jpg'
+// import backgroundMain from './assets/background-cook-2.jpg'
 import './App.css'
-import { FoodCard } from './components/FoodCard';
-import { OrdenarModal } from './components/OrdenarModal';
+import { FoodCard, OrdenarModal } from './components';
 import { useFetch } from "./hooks/useFetch";
 
 function App() {
