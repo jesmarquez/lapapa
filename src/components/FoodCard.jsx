@@ -1,7 +1,7 @@
 import arepaAmarilloCarne from '../assets/arepa-queso-carne-mechada.jpg';
 
 
-export const FoodCard = ( { setShowOrdenar, detailsFood } ) => {
+export const FoodCard = ( { setShowOrdenar, showOffcanvas, detailsFood } ) => {
 
   // console.log( detailsFood );
   const { urlImage, foodName, calories, precio } = detailsFood;
@@ -18,7 +18,7 @@ export const FoodCard = ( { setShowOrdenar, detailsFood } ) => {
                 <h5 className="card-title">{ calories }</h5>
                 <h2 className='text-end'>${ precio }</h2>
                 <p className="card-text">Hecho a base de masa de maíz seco molido o de harina de maíz precocida. Rellena con carne mechada y queso rayado gouda.</p>
-                <button className="btn btn-dark float-end"  data-bs-toggle="modal" data-bs-target="#ordenarModal" onClick={ setShowOrdenar } >Agregar</button>
+                <button className="btn btn-dark float-end"  data-bs-toggle="modal" data-bs-target="#ordenarModal" onClick={ showOffcanvas } >Agregar</button>
                 <select className="form-select" aria-label="Default select example" style={{ width: '25%' }} defaultValue={'DEFAULT'}>
                   <option value="DEFAULT">Cantidad?</option>
                   <option value="1">1</option>

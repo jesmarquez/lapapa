@@ -3,8 +3,14 @@ import { useState } from "react";
 import './App.css'
 import { FoodCard, OrdenarModal } from './components';
 import { useFetch } from "./hooks/useFetch";
+import { Cart } from "./components/Cart";
 
 function App() {
+
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
+
+  const handleShowOffcanvas = () => setShowOffcanvas(true);
+  const handleHideOffcanvas = () => setShowOffcanvas(false);
 
   const { data, isLoading, hasError } = useFetch('http://localhost:8000/foods');
 
@@ -42,14 +48,21 @@ function App() {
             data.map( detailsFood => (
               <FoodCard 
                 key={ detailsFood.id } 
-                setShowOrdenar = { handleOrdenarMostrar } 
+                setShowOrdenar = { handleOrdenarMostrar }
+                showOffcanvas = { handleShowOffcanvas }
                 detailsFood = { detailsFood }/>
             ))
             : <h1>Cargando!</h1>
           }
           <OrdenarModal showOrdenar = { showOrdenar } handleOrdenarClose = { handleOrdenarClose }/>
+
+
+          <Cart showOffcanvas={ showOffcanvas } handleHideOffcanvas={ handleHideOffcanvas }/>
+        
         </div> {/* div container */}
       </div> {/* div app */}
+
+
 
      </>
   )
