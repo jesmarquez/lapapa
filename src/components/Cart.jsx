@@ -33,10 +33,8 @@ export const Cart = ({ showOffcanvas, handleHideOffcanvas}) => {
           <div className="alert alert-dark mt-3" role="alert">
             <h3>Total: $24.00</h3>
           </div>
-          <div className="position-relative">
-            <div className="position-absolute top-50 start-50">
-              <Button variant="secondary">Ordenar!</Button>
-            </div>
+          <div className="d-flex justify-content-center">
+            <Button variant="success">Ordenar!</Button>
           </div>
         </Offcanvas.Body>
     </Offcanvas>
