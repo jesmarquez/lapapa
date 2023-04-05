@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
 
 export const OrdenarModal = ({ showOrdenar, handleOrdenarClose } ) => {
 
@@ -9,7 +10,9 @@ export const OrdenarModal = ({ showOrdenar, handleOrdenarClose } ) => {
 
   // const handleClose = () => setShow(false);
   // const handleShow = () => setShow(showOrdenar);
-
+  const handleClickSend = () => {
+    console.log('Send ')
+  }
   return (
     <Modal
         show={showOrdenar}
@@ -18,18 +21,33 @@ export const OrdenarModal = ({ showOrdenar, handleOrdenarClose } ) => {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Pedido y ordenar!</Modal.Title>
+          <Modal.Title>Enviar orden!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Verifique su pedido!
-          Puede modificarlo!
-          Presione botón ordenar para enviar su pedido al restaurant.
+          <Form>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Nombre</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Ingresa tu nombre"
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="name@example.com"
+                autoFocus
+              />
+            </Form.Group>
+          </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleOrdenarClose}>
             Cerrar
           </Button>
-          <Button variant="primary">Ordenar</Button>
+          <Button variant="primary" onClick={ handleClickSend }>Enviar orden</Button>
         </Modal.Footer>
     </Modal>
   );

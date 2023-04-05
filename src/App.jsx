@@ -57,7 +57,7 @@ function App() {
           <OrdenarModal showOrdenar = { showOrdenar } handleOrdenarClose = { handleOrdenarClose }/>
 
 
-          <Cart showOffcanvas={ showOffcanvas } handleHideOffcanvas={ handleHideOffcanvas }/>
+          <Cart showOffcanvas={ showOffcanvas } handleHideOffcanvas={ handleHideOffcanvas } handleOrdenarMostrar={ handleOrdenarMostrar } />
         
         </div> {/* div container */}
       </div> {/* div app */}
