@@ -5,6 +5,21 @@ import { FoodCard, OrdenarModal } from './components';
 import { useFetch } from "./hooks/useFetch";
 import { Cart } from "./components/Cart";
 
+
+const cartItems = [
+  {
+    id: 1,
+    name: "Arepa reina pepiada",
+    price: 9.00,
+    amount: 3
+  },
+  {
+    id: 2,
+    name: "Arepa queso y carne",
+    price: 7.00,
+    amount: 2
+  },
+];
 function App() {
 
   const [showOffcanvas, setShowOffcanvas] = useState(false);
@@ -57,7 +72,12 @@ function App() {
           <OrdenarModal showOrdenar = { showOrdenar } handleOrdenarClose = { handleOrdenarClose }/>
 
 
-          <Cart showOffcanvas={ showOffcanvas } handleHideOffcanvas={ handleHideOffcanvas } handleOrdenarMostrar={ handleOrdenarMostrar } />
+          <Cart
+            cartItems = { cartItems}
+            showOffcanvas={ showOffcanvas } 
+            handleHideOffcanvas={ handleHideOffcanvas } 
+            handleOrdenarMostrar={ handleOrdenarMostrar } 
+          />
         
         </div> {/* div container */}
       </div> {/* div app */}

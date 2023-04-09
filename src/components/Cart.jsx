@@ -1,14 +1,11 @@
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
+import Badge from 'react-bootstrap/Badge';
+import ListGroup from 'react-bootstrap/ListGroup';
+import { CartItem } from './CartItem';
 
-
-export const Cart = ({ showOffcanvas, handleHideOffcanvas, handleOrdenarMostrar }) => {
-
-  const handleClick = () => {
-    console.log('btn ordenar');
-
-  }
+export const Cart = ({ cartItems, showOffcanvas, handleHideOffcanvas, handleOrdenarMostrar }) => {
 
   return (
     <Offcanvas show={ showOffcanvas } onHide={handleHideOffcanvas} backdrop="true">
@@ -18,30 +15,18 @@ export const Cart = ({ showOffcanvas, handleHideOffcanvas, handleOrdenarMostrar 
         </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <div className="list-group">
-            <a href="#" className="list-group-item list-group-item-action" aria-current="true">
-              <div className="d-flex w-100 justify-content-between">
-                <h5 className="mb-1">Arepa reina pepiada</h5>
-                <small>Cantidad: 3</small>
-              </div>
-              <p className="mb-1">Subtotal: $16.00</p>
-              <small>Delivery</small>
-            </a>
-            <a href="#" className="list-group-item list-group-item-action" aria-current="true">
-              <div className="d-flex w-100 justify-content-between">
-                <h5 className="mb-1">Arepa queso carne </h5>
-                <small>Cantidad: 1</small>
-              </div>
-              <p className="mb-1">Subtotal: $8.00</p>
-              <small>Delivery</small>
-            </a>
-          </div>
+          <ListGroup as="ol">
+            {
+              cartItems.map( item =>  (<CartItem key = { item.id } item = { item }/>))
+            }
+           
+          </ListGroup>
           <div className="alert alert-dark mt-3" role="alert">
-            <h3>Total: $24.00</h3>
-          </div>
+            <h3 className="text-center">Total: $24.00</h3>
+          </div> 
           <div className="d-flex justify-content-center">
             <Button variant="success" onClick={ handleOrdenarMostrar }>Ordenar!</Button>
-          </div>
+          </div> 
         </Offcanvas.Body>
     </Offcanvas>
   )
