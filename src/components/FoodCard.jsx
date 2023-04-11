@@ -22,25 +22,35 @@ export const FoodCard = ( { setShowOrdenar, showOffcanvas, detailsFood } ) => {
       <div className="col-2"></div>
       <div className="col">
         <div className="card">
+
             <img src={ urlImage } className="card-img-top" alt="arepa-amarillo-carne"></img>
             <div className="card-body">
-                <h3 className="card-title">{ foodName }</h3>
-                <h5 className="card-title">{ calories }</h5>
-                <h2 className='text-end'>${ precio }</h2>
-                <p className="card-text">Hecho a base de masa de maíz seco molido o de harina de maíz precocida. Rellena con carne mechada y queso rayado gouda.</p>
-                {
-                  (amount > 0) ?
-                  <button className="btn btn-dark float-end"  data-bs-toggle="modal" data-bs-target="#ordenarModal" onClick={ () => showOffcanvas(id)  } >Agregar</button>
-                  :
-                  <button className="btn btn-dark float-end" disabled >Agregar</button>
+                <div className="container">
+                  <h3 className="card-title">{ foodName }</h3>
+                  <h5 className="card-title">{ calories }</h5>
+                  <h2 className='text-end'>${ precio }</h2>
+                  <p className="card-text">Hecho a base de masa de maíz seco molido o de harina de maíz precocida. Rellena con carne mechada y queso rayado gouda.</p>
+                  <div className="row">
+                    <div className="col-12">
+                      
+                    </div>
+                    {
+                      (amount > 0) ?
+                      <button className="btn btn-dark float-end"  data-bs-toggle="modal" data-bs-target="#ordenarModal" onClick={ () => showOffcanvas(id)  } >Agregar</button>
+                      :
+                      <button className="btn btn-dark float-end" disabled >Agregar</button>
 
-                }
-                <select className="form-select" aria-label="Default select example" style={{ width: '25%' }} defaultValue={'DEFAULT'} onClick= { handleClickSelect }>
-                  <option value="DEFAULT">Cantidad?</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                </select>
+                    }
+                    <select className="form-select" aria-label="Default select example" style={{ width: '25%' }} defaultValue={'DEFAULT'} onClick= { handleClickSelect }>
+                      <option value="DEFAULT">Cantidad?</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                    </select>
+                  </div>
+                  
+
+                </div>
             </div>
         </div>
       </div>
