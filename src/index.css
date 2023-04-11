@@ -1,0 +1,19 @@
+
+body{
+   background-color: transparent;
+   height: 100%;
+}
+
+.bg-image{
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/lapapa-faabf.appspot.com/o/vegetables.jpg?alt=media&token=46648d09-d8bc-41eb-8983-75faf22180e1');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 100vw;
+    min-height: 100vh;
+    filter: blur(8px);
+    position: fixed;
+    top: 0;
+    opacity: 0.7;
+
+}

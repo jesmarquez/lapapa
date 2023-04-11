@@ -2,9 +2,9 @@ import arepaAmarilloCarne from '../assets/arepa-queso-carne-mechada.jpg';
 import { useState } from "react";
 
 
-export const FoodCard = ( { setShowOrdenar, showOffcanvas, detailsFood } ) => {
+export const FoodCard = ({ setShowOrdenar, showOffcanvas, detailsFood }) => {
 
-  const [ amount, setAmount ] = useState(0);
+  const [amount, setAmount] = useState(0);
 
   const handleClickSelect = (e) => {
     console.log(e.target.value);
@@ -12,49 +12,48 @@ export const FoodCard = ( { setShowOrdenar, showOffcanvas, detailsFood } ) => {
       setAmount(parseInt(e.target.value));
 
   };
-  // console.log( detailsFood );
   const { id, urlImage, foodName, calories, precio } = detailsFood;
 
-  // console.log( urlImage, name, calories, precio );
-  // let urlImage = 'https://firebasestorage.googleapis.com/v0/b/lapapa-faabf.appspot.com/o/arepa-queso-carne-mechada.jpg?alt=media&token=1a85b5d8-3858-439a-bc58-8d26af1a6b7d';
   return (
-    <div className="row justify-content-md-center foodOne">
-      <div className="col-2"></div>
-      <div className="col">
-        <div className="card">
-
-            <img src={ urlImage } className="card-img-top" alt="arepa-amarillo-carne"></img>
-            <div className="card-body">
-                <div className="container">
-                  <h3 className="card-title">{ foodName }</h3>
-                  <h5 className="card-title">{ calories }</h5>
-                  <h2 className='text-end'>${ precio }</h2>
-                  <p className="card-text">Hecho a base de masa de maíz seco molido o de harina de maíz precocida. Rellena con carne mechada y queso rayado gouda.</p>
-                  <div className="row">
-                    <div className="col-12">
-                      
-                    </div>
-                    {
-                      (amount > 0) ?
-                      <button className="btn btn-dark float-end"  data-bs-toggle="modal" data-bs-target="#ordenarModal" onClick={ () => showOffcanvas(id)  } >Agregar</button>
-                      :
-                      <button className="btn btn-dark float-end" disabled >Agregar</button>
-
-                    }
-                    <select className="form-select" aria-label="Default select example" style={{ width: '25%' }} defaultValue={'DEFAULT'} onClick= { handleClickSelect }>
-                      <option value="DEFAULT">Cantidad?</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                    </select>
-                  </div>
-                  
-
-                </div>
+    <article>
+      <div className="card col-12">
+        <img src={urlImage} className="card-img-top mb-2" alt="arepa-amarillo-carne" />
+        <div className="card-body container px-4">
+          <header>
+            <div className="row">
+              <div className="col-8">
+                <h3 className="card-title mb-0">{foodName}</h3>
+                <span className="card-title text-muted fst-italic">{`(${calories})`}</span>
+              </div>
+              <div className="col-4">
+                <h2 className='text-end'>${precio}</h2>
+              </div>
             </div>
-        </div>
+          </header>
+          <p className="card-text py-4 mb-0 text-muted">
+            Hecho a base de masa de maíz seco molido o de harina de maíz precocida. Rellena con carne mechada y queso rayado gouda.
+          </p>
+          <div className="row">
+            <div className="col-12">
+              <select className="form-select" aria-label="Default select example" style={{ width: '25%' }} defaultValue={'DEFAULT'} onClick={handleClickSelect}>
+                <option value="DEFAULT">Cantidad?</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+          </div>
+          {
+            (amount > 0) ?
+              <button className="btn btn-block btn-primary py-3 float-end" data-bs-toggle="modal" data-bs-target="#ordenarModal" onClick={() => showOffcanvas(id)} >Agregar</button>
+              :
+              <button className="btn btn-dark float-end" disabled >Agregar</button>
+
+          }
+        </div>{/* card-body */}
       </div>
-      <div className="col-2"></div>
-    </div>
+    </article>
+
   )
 }
+
