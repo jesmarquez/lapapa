@@ -24,7 +24,10 @@ function App() {
 
   const [showOffcanvas, setShowOffcanvas] = useState(false);
 
-  const handleShowOffcanvas = () => setShowOffcanvas(true);
+  const handleShowOffcanvas = (id=null) => {
+    console.log(id);
+    setShowOffcanvas(true);
+  }
   const handleHideOffcanvas = () => setShowOffcanvas(false);
 
   const { data, isLoading, hasError } = useFetch('http://localhost:8000/foods');
