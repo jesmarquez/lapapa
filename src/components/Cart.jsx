@@ -1,7 +1,7 @@
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
-import Badge from 'react-bootstrap/Badge';
+import Alert from 'react-bootstrap/Alert';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { CartItem } from './CartItem';
 
@@ -17,7 +17,12 @@ export const Cart = ({ cartItems, showOffcanvas, handleHideOffcanvas, handleOrde
         <Offcanvas.Body>
           <ListGroup as="ol">
             {
-              cartItems.map( item =>  (<CartItem key = { item.id } item = { item }/>))
+              cartItems.length ? 
+                cartItems.map( item =>  (<CartItem key = { item.id } item = { item }/>))
+              : 
+              <Alert variant={'warning'}>
+                No hay items en el cart
+              </Alert>
             }
            
           </ListGroup>

@@ -15,17 +15,17 @@ export const FoodCard = ({ setShowOrdenar, showOffcanvas, detailsFood }) => {
 
   const addStorageAndshowOffcanvas = (id) => {
 
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    // let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     let newFood = {
       id: id,
       amount: amount
     }
-    console.log(cart, newFood);
-    cart.push(newFood);
+    // console.log(cart, newFood);
+    // cart.push(newFood);
 
-    localStorage.setItem('cart', JSON.stringify( cart ) );
-    showOffcanvas(id);
+    // localStorage.setItem('cart', JSON.stringify( cart ) );
+    showOffcanvas(newFood);
   };
 
   // console.log( detailsFood );
@@ -62,7 +62,7 @@ export const FoodCard = ({ setShowOrdenar, showOffcanvas, detailsFood }) => {
           </div>
           {
             (amount > 0) ?
-              <button className="btn btn-block btn-primary py-3 float-end" data-bs-toggle="modal" data-bs-target="#ordenarModal" onClick={() => showOffcanvas(id)} >Agregar</button>
+              <button className="btn btn-block btn-primary py-3 float-end" data-bs-toggle="modal" data-bs-target="#ordenarModal" onClick={() => addStorageAndshowOffcanvas(id)} >Agregar</button>
               :
               <button className="btn btn-dark float-end" disabled >Agregar</button>
 

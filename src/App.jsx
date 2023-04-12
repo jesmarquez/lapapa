@@ -1,25 +1,9 @@
 import { useState } from "react";
-// import backgroundMain from './assets/background-cook-2.jpg'
+import shoppingCart from './assets/shopping_cart_simple_icon.png';
 import './App.css'
 import { FoodCard, OrdenarModal } from './components';
 import { useFetch } from "./hooks/useFetch";
 import { Cart } from "./components/Cart";
-
-
-const cartItems = [
-  {
-    id: 1,
-    name: "Arepa reina pepiada",
-    price: 9.00,
-    amount: 3
-  },
-  {
-    id: 2,
-    name: "Arepa queso y carne",
-    price: 7.00,
-    amount: 2
-  },
-];
 
 
 function App() {
@@ -28,13 +12,13 @@ function App() {
   const { data, isLoading, hasError } = useFetch('http://localhost:8000/foods');
   const [ foods, setFoods ] = useState(data);
   const [showOrdenar, setShowOrdenar] = useState(false);
+  const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem('cart')) || []);
 
   const handleOrdenarClose = () => setShowOrdenar(false);
   
   const handleOrdenarMostrar = () => setShowOrdenar(true);
-
-  const handleShowOffcanvas = (id = null) => {
-    console.log(id);
+ 
+  const handleShowOffcanvas = (newFood = {}) => {
     setShowOffcanvas(true);
   }
 
@@ -47,7 +31,14 @@ function App() {
         <div className="bg-image"></div>
         <header className="position-relative">
           <div className="container-fluid py-4 px-4 bg-dark">
-            <h1 className="text-white text-center">La papa</h1>
+            <div className="row">
+              <div className="col-10 col-md-11">
+                <h1 className="text-white text-center">La papa</h1>
+              </div>
+              <div className="col-2 col-md-1 align-middle" style={{ verticalAlign: "middle" }}>
+                <img src={ shoppingCart } style={{ width: "50px" }} onClick={ () => handleShowOffcanvas(null) }/>
+              </div>
+            </div>
           </div> {/* div container-fluid */}
         </header>
         <section>
