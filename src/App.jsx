@@ -25,23 +25,20 @@ const cartItems = [
 function App() {
 
   const [showOffcanvas, setShowOffcanvas] = useState(false);
+  const { data, isLoading, hasError } = useFetch('http://localhost:8000/foods');
+  const [ foods, setFoods ] = useState(data);
+  const [showOrdenar, setShowOrdenar] = useState(false);
+
+  const handleOrdenarClose = () => setShowOrdenar(false);
+  
+  const handleOrdenarMostrar = () => setShowOrdenar(true);
 
   const handleShowOffcanvas = (id = null) => {
     console.log(id);
     setShowOffcanvas(true);
   }
+
   const handleHideOffcanvas = () => setShowOffcanvas(false);
-
-  const { data, isLoading, hasError } = useFetch('http://localhost:8000/foods');
-
-  const [ foods, setFoods ] = useState(data);
-
-  
-  // console.log(data);
-  const [showOrdenar, setShowOrdenar] = useState(false);
-
-  const handleOrdenarClose = () => setShowOrdenar(false);
-  const handleOrdenarMostrar = () => setShowOrdenar(true);
 
   return (
     <>
