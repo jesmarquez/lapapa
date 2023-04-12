@@ -17,9 +17,9 @@ export const CartItem = ( { id, item }) => {
     >
         <div className="ms-2 me-auto">
         <div className="fw-bold fs-4 mb-3">{ item.name }</div>
-        <p className="text-start m-0">Precio: { foodPrice.format(item.price) }</p>
-        <p className="text-start m-0">Cantidad: { foodPrice.format(item.amount) }</p>
-        <p className="fs-6 text-end m-0">Subtotal: { foodPrice.format((item.price * item.amount)) }</p>
+        <p className="text-start m-0">Precio: { foodPrice.format(item.precio) }</p>
+        <p className="text-start m-0">Cantidad: { item.amount }</p>
+        <p className="fs-6 text-end m-0">Subtotal: { foodPrice.format((item.precio * item.amount)) }</p>
         </div>
 
         <div className="align-items-center">

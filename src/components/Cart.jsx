@@ -4,8 +4,9 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { CartItem } from './CartItem';
+import { foodPrice } from '../util';
 
-export const Cart = ({ cartItems, showOffcanvas, handleHideOffcanvas, handleOrdenarMostrar }) => {
+export const Cart = ({ cartItems, showOffcanvas, handleHideOffcanvas, handleOrdenarMostrar, amountCart }) => {
 
   return (
     <Offcanvas show={ showOffcanvas } onHide={handleHideOffcanvas} backdrop="true">
@@ -27,7 +28,7 @@ export const Cart = ({ cartItems, showOffcanvas, handleHideOffcanvas, handleOrde
            
           </ListGroup>
           <div className="alert alert-dark mt-3" role="alert">
-            <h3 className="text-center">Total: $24.00</h3>
+            <h3 className="text-center">Total:{ foodPrice.format(amountCart) }</h3>
           </div> 
           <div className="d-flex justify-content-center">
             <Button variant="success" onClick={ handleOrdenarMostrar }>Ordenar!</Button>

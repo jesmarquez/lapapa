@@ -13,12 +13,40 @@ function App() {
   const [ foods, setFoods ] = useState(data);
   const [showOrdenar, setShowOrdenar] = useState(false);
   const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem('cart')) || []);
+  const [amountCart, setAmount] = useState(JSON.parse(localStorage.getItem('amount')) || 0);
+  
 
   const handleOrdenarClose = () => setShowOrdenar(false);
   
   const handleOrdenarMostrar = () => setShowOrdenar(true);
  
+  const handleOnlyShowCart = () => setShowOffcanvas(true);
+
   const handleShowOffcanvas = (newFood = {}) => {
+    
+
+    if (cartItems.lenght) {
+      console.log(cartItems);
+      
+    } else {
+      let amountCart = 0;
+      console.log('no items into cart');
+      let localCartItems = [];
+
+      const itemDetails = data.find( item => item.id === newFood.id );
+      console.log(itemDetails);
+      newFood.name = itemDetails.foodName;
+      newFood.precio = itemDetails.precio;
+
+      localCartItems.push(newFood);
+      localStorage.setItem('cart', JSON.stringify(localCartItems));
+      setCartItems(localCartItems);
+
+      localCartItems.forEach( i => amountCart+= amountCart + (newFood.amount * newFood.precio));
+      setAmount(amountCart);
+
+    }
+
     setShowOffcanvas(true);
   }
 
@@ -36,7 +64,7 @@ function App() {
                 <h1 className="text-white text-center">La papa</h1>
               </div>
               <div className="col-2 col-md-1 align-middle" style={{ verticalAlign: "middle" }}>
-                <img src={ shoppingCart } style={{ width: "50px" }} onClick={ () => handleShowOffcanvas(null) }/>
+                <img src={ shoppingCart } style={{ width: "50px" }} onClick={ () => handleOnlyShowCart() }/>
               </div>
             </div>
           </div> {/* div container-fluid */}
@@ -63,6 +91,7 @@ function App() {
                 showOffcanvas={showOffcanvas}
                 handleHideOffcanvas={handleHideOffcanvas}
                 handleOrdenarMostrar={handleOrdenarMostrar}
+                amountCart={amountCart}
               />
             </div>
           </div>
