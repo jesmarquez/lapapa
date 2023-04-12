@@ -32,6 +32,9 @@ function App() {
 
   const { data, isLoading, hasError } = useFetch('http://localhost:8000/foods');
 
+  const [ foods, setFoods ] = useState(data);
+
+  
   // console.log(data);
   const [showOrdenar, setShowOrdenar] = useState(false);
 
