@@ -23,27 +23,65 @@ function App() {
   const handleOnlyShowCart = () => setShowOffcanvas(true);
 
   const handleShowOffcanvas = (newFood = {}) => {
-    
 
-    if (cartItems.lenght) {
+    let amountCartLocalStorage = parseInt(localStorage.getItem('amount')) || 0;
+
+    const itemDetails = data.find( item => item.id === newFood.id );
+    console.log(itemDetails);
+    newFood.name = itemDetails.foodName;
+    newFood.precio = itemDetails.precio;
+
+    if (cartItems.length > 0) {
       console.log(cartItems);
+      console.log(newFood);
+
+      let indexFood = cartItems.find( food => food.id === newFood.id );
+      console.log('index food:', indexFood);
+
+      if (indexFood === undefined) {
+        console.log('food is not into cart');
+        let cartItemsLocalStorage = JSON.parse(localStorage.getItem('cart'));
+        cartItemsLocalStorage.push(newFood);
+
+        setCartItems(cartItemsLocalStorage);
+        // cartItemsCart.forEach( i => amountCart+= amountCart + (newFood.amount * newFood.precio));
+        
+        amountCartLocalStorage+= (newFood.amount * newFood.precio);
+        localStorage.setItem('amount', amountCartLocalStorage);
+        localStorage.setItem('cart', JSON.stringify(cartItemsLocalStorage));
+        setAmount(amountCartLocalStorage);
+
+
+      } else {
+        let updatedCartItems = cartItems.map( (item) => {
+          if (item.id === newFood.id) {
+            item.amount += newFood.amount;
+            amountCartLocalStorage+= (newFood.amount * newFood.precio);
+            return item;
+          }
+          return item;
+        });
+        
+        setAmount(amountCartLocalStorage);
+        localStorage.setItem('amount', amountCartLocalStorage);
+        
+        localStorage.setItem('cart', JSON.stringify(updatedCartItems));
+        console.log('food is into cart');
+      }
       
     } else {
-      let amountCart = 0;
+
       console.log('no items into cart');
       let localCartItems = [];
-
-      const itemDetails = data.find( item => item.id === newFood.id );
-      console.log(itemDetails);
-      newFood.name = itemDetails.foodName;
-      newFood.precio = itemDetails.precio;
 
       localCartItems.push(newFood);
       localStorage.setItem('cart', JSON.stringify(localCartItems));
       setCartItems(localCartItems);
 
-      localCartItems.forEach( i => amountCart+= amountCart + (newFood.amount * newFood.precio));
-      setAmount(amountCart);
+      // localCartItems.forEach( i => amountCart+= amountCart + (newFood.amount * newFood.precio));
+      amountCartLocalStorage+= (newFood.amount * newFood.precio);
+      setAmount(amountCartLocalStorage);
+      localStorage.setItem('amount', amountCartLocalStorage);
 
     }
 
