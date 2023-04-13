@@ -25,7 +25,6 @@ function App() {
   const handleShowOffcanvas = (newFood = {}) => {
 
     let amountCartLocalStorage = parseInt(localStorage.getItem('amount')) || 0;
-
     const itemDetails = data.find(item => item.id === newFood.id);
     console.log(itemDetails);
     newFood.name = itemDetails.foodName;
@@ -92,22 +91,9 @@ function App() {
 
   return (
     <>
-
       <main >
         <div className="bg-image"></div>
         <Header onShowCart={handleOnlyShowCart} />
-        {/* <header className="position-relative">
-          <div className="container-fluid py-4 px-4 bg-dark">
-            <div className="row">
-              <div className="col-10 col-md-11">
-                <h1 className="text-white text-center">La papa</h1>
-              </div>
-              <div className="col-2 col-md-1 align-middle" style={{ verticalAlign: "middle" }}>
-                <img src={shoppingCart} style={{ width: "50px" }} onClick={() => handleOnlyShowCart()} />
-              </div>
-            </div>
-          </div> 
-        </header> */}
         <CardDeck items={data}
           onShowOffcanvas={handleShowOffcanvas}
           onShowOrdenar={handleOrdenarMostrar} />
