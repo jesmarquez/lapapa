@@ -70,7 +70,7 @@ function App() {
 
     } else {
 
-      console.log('no items into cart');
+      // console.log('no items into cart');
       let localCartItems = [];
 
       localCartItems.push(newFood);
@@ -89,6 +89,36 @@ function App() {
 
   const handleHideOffcanvas = () => setShowOffcanvas(false);
 
+  const deleteItemIntoCart = async ( id ) => {
+    console.log(cartItems);
+    let amount=0;
+
+    let cartItemsLocalStorage = JSON.parse(localStorage.getItem('cart'));
+
+    const updateCartItemsLocalStorage = await cartItemsLocalStorage.filter( (item) => {
+      return item.id !== id;
+    });
+
+    localStorage.setItem('cart', JSON.stringify(updateCartItemsLocalStorage));
+
+    const newCartItems = await cartItems.filter( (item) => {
+      if (item.id === id) amount = item.amount;
+      return item.id !== id;
+    });
+    // console.log(newCartItems);
+    setCartItems(newCartItems);
+    const item = data.find(item => item.id === id);
+    const itemPrice = parseFloat(item.precio);
+    // console.log(amount, itemPrice);
+    const subtotalDelete = amount * itemPrice;
+    // console.log(newTotal);
+    const newTotal = amountCart - subtotalDelete;
+    setAmount(newTotal);
+    localStorage.setItem('amount', newTotal);
+
+    return;
+  }
+
   return (
     <>
       <main >
@@ -105,6 +135,7 @@ function App() {
           handleHideOffcanvas={handleHideOffcanvas}
           handleOrdenarMostrar={handleOrdenarMostrar}
           amountCart={amountCart}
+          deleteItemIntoCart={ deleteItemIntoCart}
         />
       </main> {/* div app */}
     </>

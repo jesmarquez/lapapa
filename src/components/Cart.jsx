@@ -6,7 +6,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { CartItem } from './CartItem';
 import { foodPrice } from '../util';
 
-export const Cart = ({ cartItems, showOffcanvas, handleHideOffcanvas, handleOrdenarMostrar, amountCart }) => {
+export const Cart = ({ cartItems, showOffcanvas, handleHideOffcanvas, handleOrdenarMostrar, amountCart, deleteItemIntoCart }) => {
 
   return (
     <Offcanvas show={ showOffcanvas } onHide={handleHideOffcanvas} backdrop="true">
@@ -19,7 +19,7 @@ export const Cart = ({ cartItems, showOffcanvas, handleHideOffcanvas, handleOrde
           <ListGroup as="ol">
             {
               cartItems.length ? 
-                cartItems.map( item =>  (<CartItem key = { item.id } item = { item }/>))
+                cartItems.map( item =>  (<CartItem key = { item.id } item = { item } deleteItemIntoCart = { deleteItemIntoCart }/>))
               : 
               <Alert variant={'warning'}>
                 No hay items en el cart
