@@ -31,7 +31,13 @@ export const Cart = ({ cartItems, showOffcanvas, handleHideOffcanvas, handleOrde
             <h3 className="text-center">Total:{ foodPrice.format(amountCart) }</h3>
           </div> 
           <div className="d-flex justify-content-center">
-            <Button variant="success" onClick={ handleOrdenarMostrar }>Ordenar!</Button>
+            {
+              cartItems.length ? 
+                <Button variant="success" onClick={ handleOrdenarMostrar }>Ordenar!</Button>
+                :
+                <Button variant="success" disabled>Ordenar!</Button>
+
+            }
           </div> 
         </Offcanvas.Body>
     </Offcanvas>
