@@ -7,8 +7,9 @@ import { Cart } from "./components/Cart";
 
 
 function App() {
-
+  // state for show/hide cart (sidebar)
   const [showOffcanvas, setShowOffcanvas] = useState(false);
+  // data has list of foods
   const { data, isLoading, hasError } = useFetch('http://localhost:8000/foods');
   const [foods, setFoods] = useState(data);
   const [showOrdenar, setShowOrdenar] = useState(false);
@@ -23,22 +24,25 @@ function App() {
   const handleOnlyShowCart = () => setShowOffcanvas(true);
 
   const handleShowOffcanvas = (newFood = {}) => {
-
+    // get money sum total so far choosen
     let amountCartLocalStorage = parseInt(localStorage.getItem('amount')) || 0;
+    // get food's detail
     const itemDetails = data.find(item => item.id === newFood.id);
-    console.log(itemDetails);
+    // console.log(itemDetails);
     newFood.name = itemDetails.foodName;
     newFood.precio = itemDetails.precio;
 
+    // if cart has item then find out if food that comming is into cart
     if (cartItems.length > 0) {
-      console.log(cartItems);
-      console.log(newFood);
+      // console.log(cartItems);
+      // console.log(newFood);
 
       let indexFood = cartItems.find(food => food.id === newFood.id);
       console.log('index food:', indexFood);
 
       if (indexFood === undefined) {
-        console.log('food is not into cart');
+        // console.log('food is not into cart');
+        // get items of cart and add coming food
         let cartItemsLocalStorage = JSON.parse(localStorage.getItem('cart'));
         cartItemsLocalStorage.push(newFood);
 
