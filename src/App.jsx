@@ -24,70 +24,35 @@ function App() {
   const handleOnlyShowCart = () => setShowOffcanvas(true);
 
   const handleShowOffcanvas = (newFood = {}) => {
-    // get money sum total so far choosen
-    let amountCartLocalStorage = parseInt(localStorage.getItem('amount')) || 0;
+    let newCartAmount = 0;
     // get food's detail
     const itemDetails = data.find(item => item.id === newFood.id);
-    // console.log(itemDetails);
     newFood.name = itemDetails.foodName;
     newFood.precio = itemDetails.precio;
 
-    // if cart has item then find out if food that comming is into cart
-    if (cartItems.length > 0) {
-      // console.log(cartItems);
-      // console.log(newFood);
+    let indexFood = cartItems.find(food => food.id === newFood.id);
+    let newCartItems = cartItems;
 
-      let indexFood = cartItems.find(food => food.id === newFood.id);
-      console.log('index food:', indexFood);
-
-      if (indexFood === undefined) {
-        // console.log('food is not into cart');
-        // get items of cart and add coming food
-        let cartItemsLocalStorage = JSON.parse(localStorage.getItem('cart'));
-        cartItemsLocalStorage.push(newFood);
-
-        setCartItems(cartItemsLocalStorage);
-        // cartItemsCart.forEach( i => amountCart+= amountCart + (newFood.amount * newFood.precio));
-
-        amountCartLocalStorage += (newFood.amount * newFood.precio);
-        localStorage.setItem('amount', amountCartLocalStorage);
-        localStorage.setItem('cart', JSON.stringify(cartItemsLocalStorage));
-        setAmount(amountCartLocalStorage);
-
-
-      } else {
-        let updatedCartItems = cartItems.map((item) => {
-          if (item.id === newFood.id) {
-            item.amount += newFood.amount;
-            amountCartLocalStorage += (newFood.amount * newFood.precio);
-            return item;
-          }
-          return item;
-        });
-
-        setAmount(amountCartLocalStorage);
-        localStorage.setItem('amount', amountCartLocalStorage);
-
-        localStorage.setItem('cart', JSON.stringify(updatedCartItems));
-        console.log('food is into cart');
-      }
-
+    if (indexFood === undefined) {
+      newCartAmount = amountCart + (newFood.amount * newFood.precio);
+      newCartItems.push(newFood);
     } else {
-
-      // console.log('no items into cart');
-      let localCartItems = [];
-
-      localCartItems.push(newFood);
-      localStorage.setItem('cart', JSON.stringify(localCartItems));
-      setCartItems(localCartItems);
-
-      // localCartItems.forEach( i => amountCart+= amountCart + (newFood.amount * newFood.precio));
-      amountCartLocalStorage += (newFood.amount * newFood.precio);
-      setAmount(amountCartLocalStorage);
-      localStorage.setItem('amount', amountCartLocalStorage);
-
+      newCartItems = cartItems.map((item) => {
+        if (item.id === newFood.id) {
+          item.amount += newFood.amount;
+          // amountCartLocalStorage += (newFood.amount * newFood.precio);
+          newCartAmount = amountCart + (newFood.amount * newFood.precio);
+          return item;
+        }
+        return item;
+      });
     }
-
+    //updating states
+    setCartItems(newCartItems);
+    setAmount(newCartAmount);
+    // to update data in persistent storage
+    localStorage.setItem('amount', newCartAmount);
+    localStorage.setItem('cart', JSON.stringify(newCartItems));
     setShowOffcanvas(true);
   }
 
