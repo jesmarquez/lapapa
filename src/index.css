@@ -5,7 +5,7 @@ body{
 }
 
 .bg-image{
-    background-image: url('https://firebasestorage.googleapis.com/v0/b/lapapa-faabf.appspot.com/o/vegetables.jpg?alt=media&token=46648d09-d8bc-41eb-8983-75faf22180e1');
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/lapapa-faabf.appspot.com/o/background-cook-2.jpg?alt=media&token=cfbef9f4-d7ee-42eb-b140-569667eaa67d);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

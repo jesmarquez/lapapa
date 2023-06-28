@@ -9,7 +9,9 @@ function App() {
   // state for show/hide cart (sidebar)
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   // data has list of foods
-  const { data, isLoading, hasError } = useFetch('http://localhost:8000/foods');
+  const { data, isLoading, hasError } = useFetch(import.meta.env.VITE_API_URL +'/foods');
+  // console.log(import.meta.env.VITE_API_URL+'/foods');
+  
   const [foods, setFoods] = useState(data);
   const [showOrdenar, setShowOrdenar] = useState(false);
   const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem('cart')) || []);
@@ -75,6 +77,7 @@ function App() {
     return;
   }
 
+  console.log(import.meta.env.VITE_IMAGES_STORAGE)
   return (
     <>
       <main >

@@ -12,7 +12,7 @@ export const Cart = ({ cartItems, showOffcanvas, handleHideOffcanvas, handleOrde
     <Offcanvas show={ showOffcanvas } onHide={handleHideOffcanvas} backdrop="true">
         <Offcanvas.Header closeButton>
         <Offcanvas.Title>
-          <Image src="https://firebasestorage.googleapis.com/v0/b/lapapa-faabf.appspot.com/o/food-tray.png?alt=media&token=80545618-d219-4641-bd20-73437528c469" rounded style={{ width: '50px'}}/>
+          <Image src={ import.meta.env.VITE_IMAGES_STORAGE + 'food-tray.png?alt=media&token=' + import.meta.env.VITE_TOKEN_STORAGE } rounded style={{ width: '50px'}}/>
         </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
