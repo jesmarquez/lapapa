@@ -52,7 +52,7 @@ export const FoodCard = ({ setShowOrdenar, showOffcanvas, detailsFood }) => {
           </p>
           <div className="row">
             <div className="col-12">
-              <select className="form-select" aria-label="Default select example" style={{ width: '25%' }} defaultValue={'DEFAULT'} onClick={handleClickSelect}>
+              <select className="form-select" aria-label="Default select example" style={{ width: '25%' }} defaultValue={'DEFAULT'} onChange={handleClickSelect}>
                 <option value="DEFAULT">Cantidad?</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
